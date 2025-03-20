@@ -1,11 +1,16 @@
 -- Create a separate database for application data
-CREATE DATABASE finance_app;
+DO $$ 
+BEGIN
+    IF NOT EXISTS (SELECT FROM pg_database WHERE datname = 'finance_app') THEN
+        CREATE DATABASE finance_app;
+    END IF;
+END $$;
 
 -- Connect to the finance_app database
 \c finance_app;
 
 -- Create transactions table
-CREATE TABLE transactions (
+CREATE TABLE IF NOT EXISTS transactions (
     id SERIAL PRIMARY KEY,
     transaction_id VARCHAR(50) UNIQUE NOT NULL,
     user_id INT NOT NULL,
