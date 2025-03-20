@@ -22,8 +22,8 @@ ENV/
 *.swo
 
 # Logs
-logs/
-*.log
+#logs/
+#*.log
 
 # OS specific files
 .DS_Store
