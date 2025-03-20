@@ -1,11 +1,6 @@
 -- Create a separate database for application data
-DO $$ 
-BEGIN
-    IF NOT EXISTS (SELECT FROM pg_database WHERE datname = 'finance_app') THEN
-        CREATE DATABASE finance_app;
-    END IF;
-END $$;
-
+CREATE DATABASE finance_app;
+ 
 -- Connect to the finance_app database
 \c finance_app;
 
