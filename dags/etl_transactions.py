@@ -5,6 +5,7 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 import os
 import pandas as pd
 import logging
+import psycopg2
 
 default_args = {
     'owner': 'mfundo',
@@ -61,12 +62,13 @@ def transform_step():
 
     df.to_csv(file_path, index=False)
     logging.info(f"Transformed data saved to {file_path}")
-    
+
 from psycopg2.extras import execute_values
 def load_step():
-    pg_hook = PostgresHook(postgres_conn_id="finance_db")
-    conn = pg_hook.get_conn()
+    user, password, host, port = 'airflow', 'airflow', 'postgres', '5432'
+    conn = psycopg2.connect(dbname='finance_app', user=user,password=password, host=host, port=port)
     cur = conn.cursor()
+    
 
     df = pd.read_csv(os.getenv('FINANCIAL_TRANSACTIONS_PATH', 'data/financial_transactions.csv'))
     data_tuples = list(df.itertuples(index=False, name=None))
