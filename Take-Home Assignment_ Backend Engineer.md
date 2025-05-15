@@ -1,4 +1,3 @@
-# **Take-Home Assignment**
 
 # Backend Engineer
 
@@ -6,9 +5,7 @@
 
 This assignment is designed to give you an opportunity to showcase your problem-solving skills, technical expertise, and ability to work with Python, Airflow, FastAPI, and databases.
 
-## Timeframe
 
-The assignment should take around 3 hours to complete. Use this as a guideline for how much effort to put into completeness and optimizations. Read through the entire assignment before you begin to get an idea of the scope and how you would like to structure your work.
 
 # Assignment Overview
 
@@ -24,7 +21,7 @@ At OpenTax, we process a large volume of tax-related financial transactions. To 
 
 You need to create an Airflow DAG that automates the ETL process for financial transactions.
 
-**Dataset:** Download the sample dataset: [Financial Transactions CSV](https://drive.google.com/file/d/1jORbN_ETnT92S_tIrYqYBLJ37aEyrShV/view?usp=sharing)
+
 
 **Steps:**
 
@@ -88,16 +85,11 @@ For a given user\_id, return:
 
 Explain any performance considerations for handling large datasets.
 
-# Submission Guidelines
+docker-compose down
+docker-compose up -d
 
-What to submit:
+sudo chmod -R 777 ./logs
 
-1. **GitHub repository or zip file containing:**  
-   1. Airflow DAG (etl\_transactions.py).  
-   2. FastAPI service (app.py).  
-   3. SQL script for database setup (schema.sql).  
-   4. README.md with setup instructions.  
-2. **A short video (5-10 min) to:**  
-   1. Demo your final results.  
-   2. Explain your thought process, key decisions and trade-offs.
+docker exec -it <postgres_container_name_or_id> psql -U your_user -d your_database
 
+\dt  -- list tables
