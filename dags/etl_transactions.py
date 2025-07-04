@@ -53,6 +53,7 @@ def transform_step():
     if not expected_columns.issubset(actual_columns):
         raise KeyError(f"Missing required columns: {expected_columns - actual_columns}")
 
+    df['amount'] = df['amount'].astype(str).str.replace('[\$,]', '', regex=True)
     df['amount'] = pd.to_numeric(df['amount'], errors='coerce')
     df['transaction_date'] = pd.to_datetime(df['transaction_date'], errors='coerce')
 
